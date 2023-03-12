@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/style.css">
+
+  <title>Cycling Route</title>
+  
+</head>
+<body>
+    <nav>    
+      <div class="weatherT" id="weatherT">
+        <div class="nav-wrapper"> 
+                   
+      </div>        
+          <section class="showcase">
+            <header>
+              <h2 class="logo"> <a href="../index.html" class="brand-logo"> <img src="./img/portada/png/logow.png" id="logo"></a>     </h2>
+              <div class="toggle"></div>
+            </header>           
+             
+            <div class="text">
+              <h2>Nunca pares </h2> 
+              <h3>Explora el mundo</h3>
+              <p>Te mostramnos las rutas desde las mas faciles hasta las mas complicadas, utilizando nustro algoritmo,
+                podras ver y ordenar tus rutas y empezar a pedalear, nuesta aplciacion del clima precisa te muestra 
+                en tiempo real las condiciones climatiocas animate dale clik.</p>            
+            </div>
+
+            
+
+            <div id="imgHome" class="imgHome">
+              <div class="slider">
+                <ul>
+                  <li><img src="../crw/img/portada/jpg/bikepacking.jpg" alt=""></li>
+                  <li><img src="../crw/img/portada/jpg/carretera.jpg" alt=""></li>
+                  <li><img src="../crw/img/portada/jpg/gravel.jpg"  alt=""></li>
+                  <li><img src="../crw/img/portada/jpg/mtb.jpg"  alt=""></li>
+                </ul>
+              </div>
+
+        
+            </div>
+
+            <ul class="social">
+              <li><a href="#"><img src="https://i.ibb.co/x7P24fL/facebook.png"></a></li>
+              <li><a href="#"><img src="https://i.ibb.co/Wnxq2Nq/twitter.png"></a></li>
+              <li><a href="#"><img src="https://i.ibb.co/ySwtH4B/instagram.png"></a></li>
+            </ul>
+          </section>
+
+          <div class="menu">
+            <ul>
+                <button class="btn"><a href="../crw/pages/login.html">Login</a></button>
+                <button class="btn"><a href="../crw/pages/register.html">Registro</a></button>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Rutas</a></li>
+                <li><a href="#">Fotos</a></li>
+                <li><a href="#">Blog</a></li>
+                <br><br>
+                <div class="group">
+                      <g>
+                          <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+                      </g>
+                  </svg>
+                  <input placeholder="Search" type="search" class="input">
+              </div>            
+            </ul>
+          </div>      
+          
+        <div class="weatherBox">  
+          <br>    
+          <h1>CONDICIONES CLIMATICAS</h1>
+            <div class="search-form">            
+              <form id="search-form">
+                <div class="searchbox">
+                  
+                  <input type="text" autocomplete="off" placeholder="Buscar ciudad..." class="search" id="searchbox" />
+                </div>
+              </form>
+            </div>     
+          <div class="weather-card" id="card"> 
+             <div class="city" id="city">República Dominciana</div>
+            <div class="date" id="date">19/02/2023</div>
+            <div class="temperature">
+              <img src="./img/clima/temp-mid.png" class="temp-img" id="temp-img"/>
+              <div class="temp" id="temp">14c</div>
+            </div>
+            <div class="weather" id="weather">Sol</div>
+            <div class="range" id="range">12c / 18c</div>
+            <br><br>
+            <!-- CALCULO DE DISTANCIA -->
+          <h1>Obtener su ubicación actual:</h1>
+          
+          <button class ="btn3" onclick="getLocation()">Obtener</button>  
+          <br>  
+          <br>      
+          <p id="location"></p>
+          <br>    
+          <h1>Calculadora de distancia:</h1>
+
+          <label for="latitude1">Ubicacion 1 latitud:</label>
+          <input type="number" id="latitude1" step="0.0001" /><br />
+      
+          <label for="longitud1">Ubicacion 1 longitud:</label>
+          <input type="number" id="longitud1" step="0.0001" /><br />
+      
+          <label for="latitude2">Ubicacion 2 latitud:</label>
+          <input type="number" id="latitude2" step="0.0001" /><br />
+      
+          <label for="longitud2">Ubicacion 2 longitud:</label>
+          <input type="number" id="longitud2" step="0.0001" /><br />
+      
+          <button class ="btn3" onclick="calculateDistance()">Obtener</button>
+          <br>    <br>       
+          <p id="result"></p>
+         
+          </div>
+      </div>     
+               
+    </nav>
+
+
+            
+
+<!-- CALCULO DE RUTA-->
+
+    <div class="containerCal" id="containerCal">  
+
+      <div class="calc">
+        <p>
+        <label for="distance">Distancia</label>
+        <select  id="distance">
+          <option value="10-20">10 a 20 kilometros</option>
+          <option value="20-60">20 a 60 kilometros</option> 
+          <option value="60-100">60  a 100 kilometros</option> 
+
+
+        </select>
+      </p>
+      </div> 
+      <br>
+
+     <div class="calc">
+      <p>
+      <label for="elevation">Elevacion</label>
+        <select  id="elevation">
+          <option value="10-100">10 a 100</option>
+          <option value="101-200">101 a 200</option> 
+          <option value="201-300">101 a 200</option> 
+
+         </select>
+      </p>
+      </div>
+      <br>
+
+      <div class="calc">
+        <p>
+        <label for="roadCondition">Terreno</label> 
+        <select  id="roadCondition">
+          <option value="asfalto">Asfalto</option>
+          <option value="trillo">Trillo</option>
+        </select>
+      </p>
+      </div>
+      <br>
+      
+      <div class="calc">
+        <p>
+        <label for="clima">Clima</label>
+        <select  id="clima"> 
+          <option value="soleado">Soleado</option>
+          <option value="lluvioso">Lluvioso</option>
+          <option value="nublado">Nublado</option>
+        </select>
+      </div>
+      <br>
+      <button class ="btn2" onclick="caldificulty()">Obtener</button>
+
+     </p>
+
+<!-- PREDICCION DE RUTA-->
+      <div>
+        <label class="df" >Esta ruta tiene una dificultad:</label>      
+        <textarea class="dificulty" id="dificulty"></Textarea>
+      </div>      
+    </div>      
+
+ 
+
+    <div id="wikiloc" class="wikiloc">
+
+        <div class="item">
+          </br>
+            <div class="maps-wiki">
+              <iframe frameBorder="0" scrolling="no" src="https://es.wikiloc.com/wikiloc/spatialArtifacts.do?event=view&id=45278290&measures=off&title=off&near=off&images=off&maptype=H"
+              width="300" height="150"></iframe><div style="color:#777;font-size:11px;line-height:16px;"></a></div>       
+              <label for="rutas">Ruta de Calentamiento Sto Dgo Este MTB</label>
+          </div>            
+        </div>
+
+          <div class="item">
+          </br>
+            <div class="maps-wiki">
+              <iframe frameBorder="0" scrolling="no" src="https://es.wikiloc.com/wikiloc/spatialArtifacts.do?event=view&id=25430798&measures=off&title=off&near=off&images=off&maptype=H"
+               width="300" height="150"></iframe><div style="color:#777;font-size:11px;line-height:16px;"></a></div>       
+               <label for="rutas">Santo Domingo I - Mirador Sur y Malecon</label>
+          </div>            
+        </div>
+
+        <div class="item">
+        </br>
+          <div class="maps-wiki">
+            <iframe frameBorder="0" scrolling="no" src="https://es.wikiloc.com/wikiloc/spatialArtifacts.do?event=view&id=36585916&measures=off&title=off&near=off&images=off&maptype=H"
+             width="300" height="150"></iframe><div style="color:#777;font-size:11px;line-height:16px;"></a></div>       
+             <label for="rutas">Ruta Valiente - Boca Chica</label>
+          </div>            
+        </div>
+        <div class="item">
+        </br>
+          <div class="maps-wiki">
+            <iframe frameBorder="0" scrolling="no" src="https://es.wikiloc.com/wikiloc/spatialArtifacts.do?event=view&id=12020612&measures=off&title=off&near=off&images=off&maptype=H"
+             width="300" height="150"></iframe><div style="color:#777;font-size:11px;line-height:16px;"></a></div>  
+             <label for="rutas">Ruta Humedales del Ozama</label>
+        </div>            
+      </div>
+
+        <div class="item">
+        </br>
+          <div class="maps-wiki">
+            <iframe frameBorder="0" scrolling="no" src="https://es.wikiloc.com/wikiloc/spatialArtifacts.do?event=view&id=114614851&measures=off&title=off&near=off&images=off&maptype=H" 
+            width="300" height="150"></iframe><div style="color:#777;font-size:11px;line-height:16px;"></a></div>    
+            <label for="rutas">Ruta de Chirino</label>
+
+        </div>            
+      </div>
+
+      <div class="item">
+      </br>
+        <div class="maps-wiki">
+          <iframe frameBorder="0" scrolling="no" src="https://es.wikiloc.com/wikiloc/spatialArtifacts.do?event=view&id=1758375&measures=off&title=off&near=off&images=off&maptype=H" 
+          width="300" height="150"></iframe><div style="color:#777;font-size:11px;line-height:16px;"></a></div>   
+          <label for="rutas">Ruta del El Higuero</label>  
+        </div>            
+      </div>
+
+      <div class="item">
+      </br>
+        <div class="maps-wiki">
+          <iframe frameBorder="0" scrolling="no" src="https://es.wikiloc.com/wikiloc/spatialArtifacts.do?event=view&id=115718995&measures=off&title=off&near=off&images=off&maptype=H"
+           width="300" height="150"></iframe><div style="color:#777;font-size:11px;line-height:16px;"></a></div>
+           <label for="rutas">Santo Domingo - salto de Socoa</label>  
+        </div>            
+      </div>
+
+      <div class="item">
+      </br>
+        <div class="maps-wiki">
+          <iframe frameBorder="0" scrolling="no" src="https://es.wikiloc.com/wikiloc/spatialArtifacts.do?event=view&id=35523700&measures=off&title=off&near=off&images=off&maptype=H"
+          width="300" height="150"></iframe><div style="color:#777;font-size:11px;line-height:16px;"></a></div>
+          <label for="rutas">Vuelta del Parque de Este</label>  
+        </div>            
+      </div>
+    </div>
+
+    <div class="footer">
+      
+    </div>
+    
+
+<script src="./js/app.js"></script>  
+</body>
+</html>
+
+
+
